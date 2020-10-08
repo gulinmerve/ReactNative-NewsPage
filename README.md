@@ -1,5 +1,6 @@
 # ReactNative-NewsPage
-ReactNative/NesPage/CuriosCoders
+ReactNative/NewsPage/CuriosCoders
+
 ![screenshot](./src/images/MyProject.png) 
 
 
