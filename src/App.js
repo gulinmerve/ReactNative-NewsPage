@@ -6,11 +6,40 @@ import {
   ScrollView,
   View,
   Text,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-  textContentType
 } from 'react-native';
+import ImageBox from './components/ImageBox';
+const images = [
+  {
+    id:0,
+    img: require("./images/start.jpg"),
+    text:'The most difficult thing is the decision to act, the rest is merely tenacity.',
+    author: 'AMELIA EARHART',
+  },
+  {
+    id:1,
+    img: require("./images/light.jpg"),
+    text:'As you struggle forward in the days and weeks ahead, remind yourself, it is far better to be exhausted from lots of effort, learning and growth, than it is to be tired of doing absolutely nothing.',
+    author: 'ANGEL CHERNOFF',
+  },
+  {
+    id:2,
+    img: require("./images/system.jpg"),
+    text:'You can never understand everything. But, you should push yourself to understand the system.',
+    author: 'RYAN DAHL (Creator of Node JS)',
+  },
+  {
+    id:3,
+    img: require("./images/impossible.jpg"),
+    text:'Nothing is impossible; there are ways that lead to everything, and if we had sufficient will we should always have sufficient means. It is often merely for an excuse that we say things are impossible.',
+    author: 'FRANCOIS DE LA ROCHEFOUCAULD',
+  },
+  {
+    id:4,
+    img: require("./images/struggle.png"),
+    text:'The brick walls are there for a reason. The brick walls are not there to keep us out. The brick walls are there to give us a chance to show how badly we want something. Because the brick walls are there to stop the people who don’t want it badly enough. They’re there to stop the other people.',
+    author: 'RANDY PAUSCH',
+  }
+]
 const App = () => {
   return (
     <ScrollView>
@@ -18,44 +47,19 @@ const App = () => {
       <View>
         <Text style={styles.header}>THE LEADERSHIP'S JOURNEY</Text>
       </View>
-      <View style={styles.container}>
-        <Image style={styles.imageContainer} source={require('./images/start.jpg')} />
-        <Text style={styles.text}>The most difficult thing is the decision to act, the rest is merely
-          tenacity.</Text>
-        <Text style={styles.name}>AMELIA EARHEART</Text>
-      </View>
-      <View style={styles.container}>
-        <Image style={styles.imageContainer} source={require('./images/light.jpg')} />
-        <Text style={styles.text}>As you struggle forward in the days and weeks ahead, remind yourself,
-          it is far better to be exhausted from lots of effort, learning and
-          growth, than it is to be tired of doing absolutely nothing.</Text>
-        <Text style={styles.name}>ANGEL CHERNOFF</Text>
-      </View>
-      <View style={styles.container}>
-        <Image style={styles.imageContainer} source={require('./images/system.jpg')} />
-        <Text style={styles.text}>You can never understand everything. But, you should push yourself to
-          understand the system.</Text>
-        <Text style={styles.name}>RYAN DAHL(Creator of Node JS)</Text>
-      </View>
-      <View style={styles.container}>
-        <Image style={styles.imageContainer} source={require('./images/impossible.jpg')} />
-        <Text style={styles.text}>Nothing is impossible; there are ways that lead to everything, and if
-          we had sufficient will we should always have sufficient means. It is
-          often merely for an excuse that we say things are impossible.</Text>
-        <Text style={styles.name}>FRANCOIS DE LA ROCHEFOUCAULD</Text>
-      </View>
-      <View style={styles.container}>
-        <Image style={styles.imageContainer} source={require('./images/struggle.png')} />
-        <Text style={styles.text}>The brick walls are there for a reason. The brick walls are not there
-          to keep us out. The brick walls are there to give us a chance to show how badly we want something. Because the brick walls are there to stop
-          the people who don’t want it badly enough. They’re there to stop the other people.</Text>
-        <Text style={styles.name}>RANDY PAUSCH</Text>
-      </View>
+      {images.map((image) => {
+        return (
+          <ImageBox
+          img = {image.img}
+          text = {image.text}
+          author = {image.author}
+          />
+        );
+      })}
     </SafeAreaView>
     </ScrollView>
   );
 };
-
 const styles= StyleSheet.create({
   header:{
     textAlign:"center",
@@ -66,39 +70,5 @@ const styles= StyleSheet.create({
     borderBottomColor:"#e87e0d",
     borderBottomWidth:1   
   },
-  container:{
-    borderWidth:2,
-    borderColor:"#3d3833",
-    color:"white",
-    borderRadius:10,
-    padding:10,
-    margin:7,
-    alignItems:"center",
-    backgroundColor:"#f7e6d4",
-    flex:1
-  },
-
-  imageContainer:{
-    width:370,
-    height:220,
-    borderRadius:10
-  },
-
-  text:{
-    marginTop:7,
-    marginBottom:0,
-    fontWeight:"600",
-    fontSize:17,
-    textAlign:"center"
-  },
-  name:{
-    fontStyle:"italic",
-    alignSelf:"flex-end",
-    marginTop:10,
-    fontSize:15
-  }
-
-
 });
-
 export default App;
